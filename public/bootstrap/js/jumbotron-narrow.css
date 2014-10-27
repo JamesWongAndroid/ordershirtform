@@ -76,4 +76,26 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+  table, th, td {
+   border: 1px solid green;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+    background-color: green;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    text-align: right;
+    height: 50px;
+    vertical-align: bottom;
+    padding: 15px;
+}
 }

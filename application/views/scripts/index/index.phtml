@@ -2,8 +2,10 @@
 $this->title = "TabFury Shirt Order Form";
 $this->headTitle($this->title);
 ?>
+
+<!--This will point to the addOrder function in the index controller -->
 <p><a class="btn btn-lg btn-success" href="<?php echo $this->url(array('controller'=>'index', 
-        'action'=>'add'));?>">Order TabFury Shirt</a></p>
+        'action'=>'add'));?>">Order TabFury T-Shirt</a></p>
 <table>
     <tr>
         <th>First Name</th>
@@ -23,6 +25,7 @@ $this->headTitle($this->title);
     <td><?php echo $this->escape($shirtOrder->color);?></td>
     <td><?php echo $this->escape($shirtOrder->shirttype);?></td>
     <td>
+        <!-- this will point to the edit and delete functions of indexcontroller -->
         <a href="<?php echo $this->url(array('controller'=>'index', 
             'action'=>'edit', 'id'=>$shirtOrder->id));?>">Edit</a>
         <a href="<?php echo $this->url(array('controller'=>'index', 

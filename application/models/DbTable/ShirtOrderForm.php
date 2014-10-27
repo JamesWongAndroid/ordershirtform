@@ -5,6 +5,7 @@ class Application_Model_DbTable_ShirtOrderForm extends Zend_Db_Table_Abstract
 
     protected $_name = 'shirtorderform';
 
+    // This function is to get a specific row in the DB
     public function getOrderForm($id) 
     {
     	$id = (int) $id;
@@ -15,6 +16,7 @@ class Application_Model_DbTable_ShirtOrderForm extends Zend_Db_Table_Abstract
     	return $row->toArray();
     }
 
+    // insert to DB
     public function addOrderForm($firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType)
     {
     	$data = array(
@@ -28,6 +30,7 @@ class Application_Model_DbTable_ShirtOrderForm extends Zend_Db_Table_Abstract
     	$this->insert($data);
     }
 
+    // update DB with ID
     public function updateOrderForm($id, $firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType) 
     {
     	$data = array(
@@ -41,6 +44,7 @@ class Application_Model_DbTable_ShirtOrderForm extends Zend_Db_Table_Abstract
     	$this->update($data, 'id = '. (int)$id);
     }
 
+    // Delete row from id parameter 
     public function deleteOrderForm($id)
     {
     	$this->delete('id =' . (int)$id);

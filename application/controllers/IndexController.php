@@ -70,15 +70,18 @@ class IndexController extends Zend_Controller_Action
                 $shirtColor = $form->getValue('color');
                 $shirtType = $form->getValue('shirttype');
                 $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
+                //Our DBObject will use the updateOrderForm to update the DB
                 $orderShirtForm->updateOrderForm($id, $firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType);
-
+                // back to index
                 $this->_helper->redirector('index');
             } else {
+                // if not posted, display selected data 
                 $form->populate($formData);
             }
         } else {
             $id = $this->_getParam('id', 0);
             if ($id > 0) {
+                // if not null, grab selected row and display its data
                 $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
                 $form->populate($orderShirtForm->getOrderForm($id));
 
@@ -89,14 +92,19 @@ class IndexController extends Zend_Controller_Action
     public function deleteAction()
     {
         if ($this->getRequest()->isPost()) {
+            // checks if the POST is from delete button, and retreives yes or no
             $del = $this->getRequest()->getPost('del');
+
             if ($del == 'Yes') {
+                // retreives the id of row, and deletes it with our DBHelper Object
                 $id = $this->getRequest()->getPost('id');
                 $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
                 $orderShirtForm->deleteOrderForm($id);
             }
+            // back to index
             $this->_helper->redirector('index');
         } else {
+            // if not POST, grab info through the select row's ID
             $id = $this->_getParam('id', 0);
             $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
             $this->view->shirtorderform = $orderShirtForm->getOrderForm($id);

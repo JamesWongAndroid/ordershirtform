@@ -13,6 +13,7 @@ $this->headTitle($this->title);
 <form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
 <div>
 	<input type="hidden" name="id" value="<?php echo $this->shirtorderform['id']; ?>" /> 
+	<!--Keep not of the value, that's what's being sent to the controller -->
 	<input type="submit" name="del" value="Yes" />
 	<input type="submit" name="del" value="No" />
 </div>

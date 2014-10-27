@@ -8,12 +8,37 @@ echo $this->doctype(); ?>
 <head>
     <?php echo $this->headMeta(); ?> 
     <?php echo $this->headTitle(); ?>
-    <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?> 
+   <!-- <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css'); ?> -->
+    <link href="bootstrap/js/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bootstrap/js/jumbotron-narrow.css" rel="stylesheet">
 </head>
 <body>
-<div id="content">
-    <h1><?php echo $this->escape($this->title); ?></h1>
+
+<div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+         <!-- <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li> -->
+        </ul>
+        <h3 class="text-muted">TapFury T-shirts</h3>
+      </div>
+
+<div class="jumbotron">
+
     <?php echo $this->layout()->content; ?>
 </div>
+<div class="footer">
+        <p>&copy; James Wong Developer 2014</p>
+      </div>
+
+    </div> <!-- /container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

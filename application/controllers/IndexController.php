@@ -2,36 +2,47 @@
 
 class IndexController extends Zend_Controller_Action
 {
-
+    // This function is called during startup
     public function init()
     {
         /* Initialize action controller here */
     }
 
+    // this function is called when index is running
     public function indexAction()
     {
+        // create an object of the database model, then displays all the rows of db
         $shirtOrderForm = new Application_Model_DbTable_ShirtOrderForm();
         $this->view->shirtorderform = $shirtOrderForm->fetchAll();
     }
 
+    // this controller will handle adding content to the DB
     public function addAction()
     {
+        // First we create an object of the form we created through Zend
         $form = new Application_Form_ShirtOrderForm();
         $form->submit->setLabel('Add');
+        // show the view of the form
         $this->view->form = $form;
 
+        //checks if there is request that is sent
         if ($this->getRequest()->isPost()) {
+            //retreive the form information
             $formData = $this->getRequest()->getPost();
+            // Checks to see if all fields are fill out properly
             if ($form->isValid($formData)) {
+                // putting the values into variables
                 $firstName = $form->getValue('firstname');
                 $lastName = $form->getValue('lastname');
                 $address = $form->getValue('address');
                 $shirtSize = $form->getValue('shirtsize');
                 $shirtColor = $form->getValue('color');
                 $shirtType = $form->getValue('shirttype');
+                // Create an instance of DB model, so that we can use function
+                // to insert into the database
                 $shirtOrderForm = new Application_Model_DbTable_ShirtOrderForm();
                 $shirtOrderForm->addOrderForm($firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType);
-
+                // back to the index view
                 $this->_helper->redirector('index');
             } else {
                 $form->populate($formData);
@@ -49,6 +60,8 @@ class IndexController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
+                //Same as add, but here we need to retreive the ID as well
+                // so that we know which row to update completely
                 $id = (int)$form->getValue('id');
                 $firstName = $form->getValue('firstname');
                 $lastName = $form->getValue('lastname');

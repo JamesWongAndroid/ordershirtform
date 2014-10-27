@@ -25,7 +25,7 @@ class Application_Form_ShirtOrderForm extends Zend_Form
         		  ->addValidator('NotEmpty');
 
         $address = new Zend_Form_Element_Text('address');
-        $address->setLabel('address')
+        $address->setLabel('Address')
         		  ->setRequired(true)
         		  ->addFilter('StripTags')
         		  ->addFilter('StringTrim')

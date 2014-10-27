@@ -17,10 +17,10 @@ class IndexController extends Zend_Controller_Action
     public function addAction()
     {
         $form = new Application_Form_ShirtOrderForm();
-        $form->submit->setLable('Add');
+        $form->submit->setLabel('Add');
         $this->view->form = $form;
 
-        if ($this->getRequest()->$isPost()) {
+        if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
                 $firstName = $form->getValue('firstname');
@@ -29,6 +29,7 @@ class IndexController extends Zend_Controller_Action
                 $shirtSize = $form->getValue('shirtsize');
                 $shirtColor = $form->getValue('color');
                 $shirtType = $form->getValue('shirttype');
+                $shirtOrderForm = new Application_Model_DbTable_ShirtOrderForm();
                 $shirtOrderForm->addOrderForm($firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType);
 
                 $this->_helper->redirector('index');
@@ -48,6 +49,7 @@ class IndexController extends Zend_Controller_Action
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
+                $id = (int)$form->getValue('id');
                 $firstName = $form->getValue('firstname');
                 $lastName = $form->getValue('lastname');
                 $address = $form->getValue('address');
@@ -55,7 +57,7 @@ class IndexController extends Zend_Controller_Action
                 $shirtColor = $form->getValue('color');
                 $shirtType = $form->getValue('shirttype');
                 $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
-                $orderShirtForm->updateOrderForm($firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType);
+                $orderShirtForm->updateOrderForm($id, $firstName, $lastName, $address, $shirtSize, $shirtColor, $shirtType);
 
                 $this->_helper->redirector('index');
             } else {
@@ -84,7 +86,7 @@ class IndexController extends Zend_Controller_Action
         } else {
             $id = $this->_getParam('id', 0);
             $orderShirtForm = new Application_Model_DbTable_ShirtOrderForm();
-            $this->view->shirtorderform = $shirtorderform->getOrderForm($id);
+            $this->view->shirtorderform = $orderShirtForm->getOrderForm($id);
         }
     }
 

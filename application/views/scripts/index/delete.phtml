@@ -10,9 +10,9 @@ $this->headTitle($this->title);
 	<?php echo $this->escape($this->shirtorderform['color']); ?>
 	<?php echo $this->escape($this->shirtorderform['shirttype']); ?>
 </p>
-<form action="<?php echo $this->url(array('action'=>'delete')); ?>"
+<form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
 <div>
-	<input type="hidden" name="id" value="<?php echo $this->shirtorderform['id']; ?>" />
+	<input type="hidden" name="id" value="<?php echo $this->shirtorderform['id']; ?>" /> 
 	<input type="submit" name="del" value="Yes" />
 	<input type="submit" name="del" value="No" />
 </div>

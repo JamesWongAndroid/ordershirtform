@@ -2,8 +2,8 @@
 $this->title = "TabFury Shirt Order Form";
 $this->headTitle($this->title);
 ?>
-<p><a href="<?php echo $this->url(array('controller'=>'index',
-'action'=>'add'));?>">Order TabFury Shirt</a></p>
+<p><a href="<?php echo $this->url(array('controller'=>'index', 
+        'action'=>'add'));?>">Order TabFury Shirt</a></p>
 <table>
     <tr>
         <th>First Name</th>
@@ -24,9 +24,9 @@ $this->headTitle($this->title);
     <td><?php echo $this->escape($shirtOrder->shirttype);?></td>
     <td>
         <a href="<?php echo $this->url(array('controller'=>'index', 
-            'action'=>'edit', 'id'=>$album->id));?>">Edit</a>
+            'action'=>'edit', 'id'=>$shirtOrder->id));?>">Edit</a>
         <a href="<?php echo $this->url(array('controller'=>'index', 
-            'action'=>'delete', 'id'=>$album->id));?>">Delete</a>
+            'action'=>'delete', 'id'=>$shirtOrder->id));?>">Delete</a>
     </td>
 </tr>
 <?php endforeach; ?>

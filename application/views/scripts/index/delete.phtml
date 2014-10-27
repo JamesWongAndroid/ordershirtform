@@ -1,0 +1,19 @@
+<?php
+$this->title = "Delete Shirt Order";
+$this->headTitle($this->title);
+?>
+<p>Are you sure you want to delete
+	<?php echo $this->escape($this->shirtorderform['firstname']); ?>
+	<?php echo $this->escape($this->shirtorderform['lastname']); ?>
+	<?php echo $this->escape($this->shirtorderform['address']); ?>
+	<?php echo $this->escape($this->shirtorderform['shirtsize']); ?>
+	<?php echo $this->escape($this->shirtorderform['color']); ?>
+	<?php echo $this->escape($this->shirtorderform['shirttype']); ?>
+</p>
+<form action="<?php echo $this->url(array('action'=>'delete')); ?>"
+<div>
+	<input type="hidden" name="id" value="<?php echo $this->shirtorderform['id']; ?>" />
+	<input type="submit" name="del" value="Yes" />
+	<input type="submit" name="del" value="No" />
+</div>
+</form>
